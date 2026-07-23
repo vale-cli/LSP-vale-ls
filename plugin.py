@@ -1,12 +1,14 @@
+# LSP
+from __future__ import annotations
+
+from LSP.plugin import AbstractPlugin
+from LSP.plugin import register_plugin
+from LSP.plugin import unregister_plugin
 import os
 import shutil
+import sublime
 import urllib.request
 import zipfile
-
-import sublime
-
-# LSP
-from LSP.plugin import AbstractPlugin, register_plugin, unregister_plugin
 
 SESSION_NAME = "vale-ls"
 
@@ -45,7 +47,7 @@ class ValeLS(AbstractPlugin):
 
     @classmethod
     def basedir(cls) -> str:
-        return os.path.join(cls.storage_path(), __package__)
+        return os.path.join(cls.storage_path(), str(__package__))
 
     @classmethod
     def server_version(cls) -> str:
